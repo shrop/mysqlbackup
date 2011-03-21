@@ -9,6 +9,8 @@ Setup:
 2. Modify the backup path if you want backups to be stored in a specific location
 3. Set the MaxFileAge to the number of days you with to keep backups
 4. Edit the included launchdaemon filename, plist Label and StartCalendarInterval Hour and Minute as desired for automatic execution. I place this file in /Library/LaunchDaemons. See info below on starting and stopping launchdaemons.
+5. If you are running a Unix platform with crontab, you can add this line to your crontab to perform the same backup as the launchdaemon performs (remove quotes): 
+"0   23   *   *   *   root    /opt/mysqlbackup/mysqlbackup.sh"
 
 Starting and stopping using launchd:
 % sudo launchctl load /Library/LaunchDaemons/net.shropnet.MySQLBackup.plist
