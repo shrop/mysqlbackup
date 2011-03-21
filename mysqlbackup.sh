@@ -10,7 +10,7 @@ if ps ax | grep -v grep | grep mysqld > /dev/null
 		# Our Base backup directory
 		BASEBACKUP="."
 
-		for DATABASE in `cat dblist.txt`
+		for DATABASE in `echo 'show databases' | mysql --column-names=false -uroot -proot`
 		do
         	# This is where we throw our backups.
         	FILEDIR="$BASEBACKUP/$DATABASE"
@@ -23,7 +23,7 @@ if ps ax | grep -v grep | grep mysqld > /dev/null
        		fi
 
        		echo -n "Exporting database:  $DATABASE"
-       		mysqldump --host=localhost --user=root --password=root --opt $DATABASE | gzip -c -9 > $FILEDIR/$DATABASE-$DATE.sql.gz
+       		mysqldump --host=localhost --user=root --password=root --single-transaction --opt $DATABASE | gzip -c -9 > $FILEDIR/$DATABASE-$DATE.sql.gz
        		echo "      ......[ Done ] "
 		done
 fi
