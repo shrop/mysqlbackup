@@ -1,12 +1,10 @@
-<strong>Credits:</strong>
+Credits:
 I have been using this script for years. Credit for the original script goes to the author (bofh468) of this article: http://www.tech-recipes.com/rx/221/mysql-daily-database-dumps-all-nicely-sorted/.
 
-<strong>What does it do?</strong>
+What does it do?
 The script will connect to a MySQL database server and backup all of the databases running on the server. Files are saved with timestamps. Once you test the script, set it up in cron or as a launch daemon for automated backups.
 
-<stront>Setup:</strong>
-<ul>
-  <li>Add MySQL server username and password in the two places of script requiring entry</li>
-  <li>Modify the backup path if you want backups to be stored in a specific location</li>
-  <li>Set the MaxFileAge to the number of days you with to keep backups</li>
-<ul>
+Setup:
+1. Add MySQL server username and password in the two places of script requiring entry
+2. Modify the backup path if you want backups to be stored in a specific location
+3. Set the MaxFileAge to the number of days you with to keep backups
