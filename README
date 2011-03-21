@@ -2,9 +2,17 @@ Credits:
 I have been using this script for years. Credit for the original script goes to the author (bofh468) of this article: http://www.tech-recipes.com/rx/221/mysql-daily-database-dumps-all-nicely-sorted/.
 
 What does it do?
-The script will connect to a MySQL database server and backup all of the databases running on the server. Files are saved with timestamps. Once you test the script, set it up in cron or as a launch daemon for automated backups.
+The script will connect to a MySQL database server and backup all of the databases running on the server. Files are saved with timestamps. Once you test the script, set it up in cron or as a launchdaemon for automated backups.
 
 Setup:
 1. Add MySQL server username and password in the two places of script requiring entry
 2. Modify the backup path if you want backups to be stored in a specific location
 3. Set the MaxFileAge to the number of days you with to keep backups
+4. Edit the included launchdaemon filename, plist Label and StartCalendarInterval Hour and Minute as desired for automatic execution. I place this file in /Library/LaunchDaemons. See info below on starting and stopping launchdaemons.
+
+Starting and stopping using launchd:
+% sudo launchctl load /Library/LaunchDaemons/net.shropnet.MySQLBackup.plist
+% sudo launchctl start net.shropnet.MySQLBackup  
+
+% sudo launchctl stop net.shropnet.MySQLBackup
+% sudo launchctl unload /Library/LaunchDaemons/net.shropnet.MySQLBackup.plist
